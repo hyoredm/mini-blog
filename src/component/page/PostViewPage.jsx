@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import CommentList from "../list/CommentList"
 import TextInput from "../ui/TextInput";
@@ -34,4 +34,64 @@ const PostContainer = styled.div`
 
 const TitleText = styled.p`
     font-size: 28px;
-`
+    font-weight: 500;
+`;
+
+const ContentText = styled.p`
+    font-size: 20px;
+    line-height: 32px;
+    white-space: pre-wrap;
+`;
+
+const CommentLabel = styled.p`
+    font-size: 16px;
+    font-weight: 500;
+`;
+
+function PostViewPage(props) {
+    const navigate = useNavigate();
+    const { postId } = useParams();
+
+    const post = data.find((items) => {
+        return items.id == postId;
+    });
+
+    const [comment, setComment] = useState("");
+
+    return (
+        <Wrapper>
+            <Contatiner>
+                <Button
+                    title="뒤로 가기"
+                    onClick={() => {
+                        navigate("/");
+                    }}
+                />
+                <PostContainer>
+                    <TitleText>{post.title}</TitleText>
+                    <ContentText>{post.content}</ContentText>
+                </PostContainer>
+
+                <CommentLabel>댓글</CommentLabel>
+                <CommentList comments={post.comments} />
+
+                <TextInput
+                    height={40}
+                    value={comment}
+                    onChange={(event) => {
+                        setComment(event.target.value);
+                    }}
+                />
+                <Button
+                    title="댓글 작성하기"
+                    onClick={() => {
+                        navigate("/");
+                    }}
+                />
+            </Contatiner>
+        </Wrapper>
+    );
+
+}
+
+export default PostViewPage;
