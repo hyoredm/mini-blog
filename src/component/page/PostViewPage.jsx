@@ -60,7 +60,7 @@ function PostViewPage(props) {
 
     return (
         <Wrapper>
-            <Contatiner>
+            <Container>
                 <Button
                     title="뒤로 가기"
                     onClick={() => {
@@ -88,7 +88,7 @@ function PostViewPage(props) {
                         navigate("/");
                     }}
                 />
-            </Contatiner>
+            </Container>
         </Wrapper>
     );
 
