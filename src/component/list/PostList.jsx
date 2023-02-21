@@ -20,7 +20,7 @@ function PostList(props) {
 
     return (
         <Wrapper>
-            {posts.mpa((post, index) => {
+            {posts.map((post, index) => {
                 return (
                     <PostListItem
                         key={post.id}

@@ -27,7 +27,7 @@ const Container = styled.div`
 
 function MainPage(props) {
     const {} = props;
-
+    
     const navigate = useNavigate();
 
     return (
@@ -37,6 +37,13 @@ function MainPage(props) {
                     title="글 작성하기"
                     onClick={() => {
                         navigate("/post-write");
+                    }}
+                />
+
+                <PostList
+                    posts={data}
+                    onClickItem={(item) => {
+                        navigate(`/post/${item.id}`);
                     }}
                 />
             </Container>
